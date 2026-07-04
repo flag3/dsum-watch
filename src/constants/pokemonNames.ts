@@ -308,10 +308,6 @@ const ENGLISH_POKEMON_NAMES_BY_DEX: Readonly<Record<number, string>> = {
   151: "Mew",
 };
 
-export function getJapanesePokemonName(dex: number, fallback: string): string {
-  return JAPANESE_POKEMON_NAMES_BY_DEX[dex] ?? fallback;
-}
-
 export function getPokemonName(dex: number, language: Language, fallback: string): string {
   const names = language === "en" ? ENGLISH_POKEMON_NAMES_BY_DEX : JAPANESE_POKEMON_NAMES_BY_DEX;
   return names[dex] ?? fallback;

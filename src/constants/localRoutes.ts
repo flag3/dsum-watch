@@ -1,5 +1,5 @@
 import { CSV_ENCOUNTER_DATA } from "./csvEncounterData";
-import { JAPANESE_ROUTE_NAMES_BY_ID, ROUTE_ORDER } from "./routeCatalog";
+import { ROUTE_ORDER } from "./routeCatalog";
 import type { RouteId } from "./routeCatalog";
 import type { Game, RouteData } from "../types";
 
@@ -11,7 +11,6 @@ function buildRoute(routeId: RouteId): RouteData {
 
   return {
     id: routeId,
-    name: JAPANESE_ROUTE_NAMES_BY_ID[routeId] ?? routeId,
     encounterRate: {
       RED: redData?.encounterRate ?? 0,
       GREEN: greenData?.encounterRate ?? 0,
@@ -41,15 +40,15 @@ function buildRoute(routeId: RouteId): RouteData {
 
 export const ROUTES: readonly RouteData[] = ROUTE_ORDER.map(buildRoute);
 
-export const ROUTES_BY_ID = new Map(ROUTES.map((route) => [route.id, route]));
+const ROUTES_BY_ID = new Map(ROUTES.map((route) => [route.id, route]));
 
 export function getRouteData(routeId: string): RouteData {
   return ROUTES_BY_ID.get(routeId) ?? ROUTES[0];
 }
 
 export function getRouteEncounterState(route: RouteData, game: Game) {
-  const groundEncounters = route.encounters[game] ?? [];
-  const waterEncounters = route.waterEncounters?.[game] ?? [];
+  const groundEncounters = route.encounters[game];
+  const waterEncounters = route.waterEncounters[game];
 
   return {
     groundEncounters,

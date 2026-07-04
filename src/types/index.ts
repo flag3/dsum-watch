@@ -7,18 +7,16 @@ export type EncounterMode = "ground" | "water";
 export type Language = "ja" | "en";
 
 export interface Encounter {
-  readonly species: string;
   readonly dex: number;
   readonly level: number;
 }
 
 export interface RouteData {
   readonly id: string;
-  readonly name: string;
-  readonly encounterRate: Partial<Record<Game, number>>;
-  readonly encounters: Partial<Record<Game, readonly Encounter[]>>;
-  readonly waterEncounterRate?: Partial<Record<Game, number>>;
-  readonly waterEncounters?: Partial<Record<Game, readonly Encounter[]>>;
+  readonly encounterRate: Readonly<Record<Game, number>>;
+  readonly encounters: Readonly<Record<Game, readonly Encounter[]>>;
+  readonly waterEncounterRate: Readonly<Record<Game, number>>;
+  readonly waterEncounters: Readonly<Record<Game, readonly Encounter[]>>;
 }
 
 export interface SelectionConfig {

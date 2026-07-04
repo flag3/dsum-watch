@@ -41,7 +41,7 @@ export function applyBattleTimeout(state: WatchState, now: number): WatchState {
   return state;
 }
 
-export function getElapsedTimes(state: WatchState, now: number) {
+function getElapsedTimes(state: WatchState, now: number) {
   return {
     battleMs: state.battleEndTime - state.startTime,
     totalMs: now - state.startTime,

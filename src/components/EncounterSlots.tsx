@@ -1,6 +1,6 @@
 import { getRouteEncounterState } from "../constants/localRoutes";
 import { formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
-import type { EncounterMode, Game, Language, RouteData } from "../types";
+import type { Encounter, EncounterMode, Game, Language, RouteData } from "../types";
 
 interface EncounterSlotsProps {
   readonly game: Game;
@@ -75,11 +75,7 @@ function SlotGrid({
   encounters,
   language,
 }: {
-  readonly encounters: readonly {
-    readonly dex: number;
-    readonly species: string;
-    readonly level: number;
-  }[];
+  readonly encounters: readonly Encounter[];
   readonly language: Language;
 }) {
   return (
@@ -88,7 +84,7 @@ function SlotGrid({
         <article className="slot-card" key={`${index}-${encounter.dex}-${encounter.level}`}>
           <span className="slot-index">{index + 1}</span>
           <span className="slot-detail">
-            <strong>{getPokemonName(encounter.dex, language, encounter.species)}</strong>
+            <strong>{getPokemonName(encounter.dex, language, String(encounter.dex))}</strong>
             <span>{formatLevel(encounter.level, language)}</span>
           </span>
         </article>

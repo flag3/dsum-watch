@@ -1,4 +1,3 @@
-import { getJapanesePokemonName } from "./pokemonNames";
 import type { Encounter, Game } from "../types";
 
 export interface CsvEncounterData {
@@ -8,12 +7,8 @@ export interface CsvEncounterData {
   readonly waterEncounters: readonly Encounter[];
 }
 
-function encounter(dex: number, level: number): Encounter {
-  return { species: getJapanesePokemonName(dex, String(dex)), dex, level };
-}
-
 function encounters(entries: readonly (readonly [number, number])[]): readonly Encounter[] {
-  return entries.map(([dex, level]) => encounter(dex, level));
+  return entries.map(([dex, level]) => ({ dex, level }));
 }
 
 export const CSV_ENCOUNTER_DATA: Readonly<

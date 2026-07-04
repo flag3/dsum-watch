@@ -1,28 +1,32 @@
 import { useEffect, useState } from "react";
 
 import { GAME_ACCENTS } from "../constants/gameAccents";
-import { getRouteEncounterState } from "../constants/localRoutes";
+import { getRouteData, getRouteEncounterState } from "../constants/localRoutes";
 import { useDSumWatches } from "../hooks/useDSumWatches";
-import { useSelectionConfig } from "../hooks/useSelectionConfig";
 import {
   getInitialLanguage,
   getLocalizedDataGame,
   getRouteName,
   getTranslation,
 } from "../i18n/i18n";
-import type { EncounterMode, Language } from "../types";
+import type { EncounterMode, Game, Language, SelectionConfig } from "../types";
 import { DSumWatchPair } from "./DSumWatchPair";
 import { EncounterSlots } from "./EncounterSlots";
 import { SettingsPanel } from "./SettingsPanel";
+
+const DEFAULT_SELECTION: SelectionConfig = { game: "RED", routeId: "ROUTE_1" };
 
 export function DSumApp() {
   const { state, now, toggle } = useDSumWatches();
   const [encounterMode, setEncounterMode] = useState<EncounterMode>("ground");
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
-  const { selection, selectedRouteData, setGame, setRouteId } = useSelectionConfig();
+  const [selection, setSelection] = useState<SelectionConfig>(DEFAULT_SELECTION);
+  const setGame = (game: Game) => setSelection((current) => ({ ...current, game }));
+  const setRouteId = (routeId: string) => setSelection((current) => ({ ...current, routeId }));
+  const selectedRouteData = getRouteData(selection.routeId);
   const localizedDataGame = getLocalizedDataGame(selection.game, language);
-  const selectedEncounterRate = selectedRouteData.encounterRate[localizedDataGame] ?? 0;
-  const selectedWaterEncounterRate = selectedRouteData.waterEncounterRate?.[localizedDataGame] ?? 0;
+  const selectedEncounterRate = selectedRouteData.encounterRate[localizedDataGame];
+  const selectedWaterEncounterRate = selectedRouteData.waterEncounterRate[localizedDataGame];
   const { hasGroundEncounters, hasWaterEncounters } = getRouteEncounterState(
     selectedRouteData,
     localizedDataGame,
@@ -44,9 +48,9 @@ export function DSumApp() {
 
   useEffect(() => {
     if (language === "en" && selection.game === "GREEN") {
-      setGame("BLUE");
+      setSelection((current) => ({ ...current, game: "BLUE" }));
     }
-  }, [language, selection.game, setGame]);
+  }, [language, selection.game]);
 
   return (
     <main className="dsum-shell">

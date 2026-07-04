@@ -3,8 +3,9 @@ import {
   JAPANESE_ROUTE_NAMES_BY_ID,
   type RouteId,
 } from "../constants/routeCatalog";
-import { getPokemonName as getLocalizedPokemonName } from "../constants/pokemonNames";
 import type { Game, Language } from "../types";
+
+export { getPokemonName } from "../constants/pokemonNames";
 
 export const SUPPORTED_LANGUAGES: readonly {
   readonly id: Language;
@@ -111,10 +112,6 @@ export function getLocalizedDataGame(game: Game, language: Language): Game {
 export function getRouteName(routeId: string, language: Language): string {
   const names = language === "en" ? ENGLISH_ROUTE_NAMES_BY_ID : JAPANESE_ROUTE_NAMES_BY_ID;
   return names[routeId as RouteId] ?? routeId;
-}
-
-export function getPokemonName(dex: number, language: Language, fallback: string): string {
-  return getLocalizedPokemonName(dex, language, fallback);
 }
 
 export function formatLevel(level: number, language: Language): string {
