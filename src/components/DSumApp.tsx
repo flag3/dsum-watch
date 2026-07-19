@@ -25,8 +25,6 @@ export function DSumApp() {
   const setRouteId = (routeId: string) => setSelection((current) => ({ ...current, routeId }));
   const selectedRouteData = getRouteData(selection.routeId);
   const localizedDataGame = getLocalizedDataGame(selection.game, language);
-  const selectedEncounterRate = selectedRouteData.encounterRate[localizedDataGame];
-  const selectedWaterEncounterRate = selectedRouteData.waterEncounterRate[localizedDataGame];
   const { hasGroundEncounters, hasWaterEncounters } = getRouteEncounterState(
     selectedRouteData,
     localizedDataGame,
@@ -76,14 +74,12 @@ export function DSumApp() {
       />
 
       <EncounterSlots
-        encounterRate={selectedEncounterRate}
         game={localizedDataGame}
         language={language}
         mode={encounterMode}
         onModeChange={setEncounterMode}
         route={selectedRouteData}
         routeName={getRouteName(selectedRouteData.id, language)}
-        waterEncounterRate={selectedWaterEncounterRate}
       />
 
       <div className="watch-grid">

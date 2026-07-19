@@ -6,10 +6,8 @@ interface EncounterSlotsProps {
   readonly game: Game;
   readonly language: Language;
   readonly mode: EncounterMode;
-  readonly encounterRate: number;
   readonly onModeChange: (mode: EncounterMode) => void;
   readonly routeName: string;
-  readonly waterEncounterRate: number;
   readonly route: RouteData;
 }
 
@@ -17,16 +15,14 @@ export function EncounterSlots({
   game,
   language,
   mode,
-  encounterRate,
   onModeChange,
   routeName,
-  waterEncounterRate,
   route,
 }: EncounterSlotsProps) {
   const { groundEncounters, hasGroundEncounters, hasWaterEncounters, waterEncounters } =
     getRouteEncounterState(route, game);
   const activeEncounters = mode === "water" ? waterEncounters : groundEncounters;
-  const activeRate = mode === "water" ? waterEncounterRate : encounterRate;
+  const activeRate = mode === "water" ? route.waterEncounterRate[game] : route.encounterRate[game];
 
   return (
     <section className="encounter-slots" aria-label={getTranslation(language, "encounters.title")}>
