@@ -19,7 +19,7 @@
 
 .eyebrow {
   margin: 0 0 4px;
-  color: #53616f;
+  color: var(--fgColor-muted);
   font-size: 14px;
 }
 
@@ -36,7 +36,7 @@ h1 {
 .app-credit {
   max-width: 680px;
   margin: 10px 0 0;
-  color: #53616f;
+  color: var(--fgColor-muted);
   font-size: 14px;
   line-height: 1.6;
 }
@@ -55,10 +55,10 @@ h2 {
 
 .encounter-slots {
   margin-bottom: 20px;
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--borderColor-default);
   border-radius: 8px;
   padding: 16px;
-  background: #ffffff;
+  background: var(--bgColor-default);
 }
 
 .encounter-header {
@@ -80,10 +80,10 @@ h2 {
   min-width: 48px;
   min-height: 40px;
   place-items: center;
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--borderColor-default);
   border-radius: 8px;
-  background: #f7f9fc;
-  color: #17202a;
+  background: var(--bgColor-muted);
+  color: var(--fgColor-default);
   font-size: 20px;
   font-weight: 700;
 }
@@ -100,15 +100,15 @@ h2 {
   gap: 8px;
   align-items: center;
   min-height: 42px;
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--borderColor-default);
   border-radius: 8px;
   padding: 8px 10px;
-  background: #f7f9fc;
+  background: var(--bgColor-muted);
 }
 
 .slot-card strong {
   overflow: hidden;
-  color: #17202a;
+  color: var(--fgColor-default);
   font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -123,7 +123,7 @@ h2 {
 
 .slot-detail span {
   flex: 0 0 auto;
-  color: #53616f;
+  color: var(--fgColor-muted);
   font-size: 13px;
 }
 
@@ -133,15 +133,15 @@ h2 {
   height: 26px;
   place-items: center;
   border-radius: 999px;
-  background: #17202a;
-  color: #ffffff;
+  background: var(--bgColor-emphasis);
+  color: var(--fgColor-onEmphasis);
   font-size: 13px;
   font-weight: 700;
 }
 
 .empty-slots {
   margin: 0;
-  color: #53616f;
+  color: var(--fgColor-muted);
 }
 
 .settings-panel {
@@ -151,18 +151,18 @@ h2 {
   align-items: end;
   justify-content: start;
   margin-bottom: 20px;
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--borderColor-default);
   border-radius: 8px;
   padding: 16px;
-  background: #ffffff;
+  background: var(--bgColor-default);
 }
 
 .watch-pair {
-  border: 1px solid #d7dee8;
+  border: 1px solid var(--borderColor-default);
   border-radius: 8px;
   padding: 18px;
-  background: #ffffff;
-  box-shadow: 0 10px 28px rgb(27 35 47 / 8%);
+  background: var(--bgColor-default);
+  box-shadow: var(--shadow-resting-medium);
 }
 
 .watch-pair-header {
@@ -176,7 +176,7 @@ h2 {
 .phase-label {
   display: inline-block;
   margin-top: 6px;
-  color: #53616f;
+  color: var(--fgColor-muted);
   font-size: 14px;
 }
 
@@ -203,7 +203,7 @@ h2 {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 18px;
-  color: #53616f;
+  color: var(--fgColor-muted);
   font-size: 14px;
 }
 
@@ -211,11 +211,11 @@ kbd {
   display: inline-block;
   min-width: 20px;
   margin-right: 4px;
-  border: 1px solid #c8d0dc;
+  border: 1px solid var(--borderColor-default);
   border-radius: 4px;
   padding: 1px 6px;
-  background: #fff;
-  color: #17202a;
+  background: var(--bgColor-muted);
+  color: var(--fgColor-default);
   text-align: center;
 }
 
