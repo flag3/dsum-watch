@@ -24,32 +24,31 @@ export function DSumApp() {
   const [selection, setSelection] = useState<SelectionConfig>(DEFAULT_SELECTION);
   const setGame = (game: Game) => setSelection((current) => ({ ...current, game }));
   const setRouteId = (routeId: string) => setSelection((current) => ({ ...current, routeId }));
+  const handleLanguageChange = (nextLanguage: Language) => {
+    setLanguage(nextLanguage);
+    if (nextLanguage === "en" && selection.game === "GREEN") {
+      setGame("BLUE");
+    }
+  };
   const selectedRouteData = getRouteData(selection.routeId);
   const localizedDataGame = getLocalizedDataGame(selection.game, language);
   const { hasGroundEncounters, hasWaterEncounters } = getRouteEncounterState(
     selectedRouteData,
     localizedDataGame,
   );
+  const resolvedEncounterMode: EncounterMode =
+    encounterMode === "water"
+      ? hasWaterEncounters
+        ? "water"
+        : "ground"
+      : !hasGroundEncounters && hasWaterEncounters
+        ? "water"
+        : "ground";
   const watchPalette = GAME_ACCENTS[selection.game];
-
-  useEffect(() => {
-    if (encounterMode === "water" && !hasWaterEncounters) {
-      setEncounterMode("ground");
-    }
-    if (encounterMode === "ground" && !hasGroundEncounters && hasWaterEncounters) {
-      setEncounterMode("water");
-    }
-  }, [encounterMode, hasGroundEncounters, hasWaterEncounters]);
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
-
-  useEffect(() => {
-    if (language === "en" && selection.game === "GREEN") {
-      setSelection((current) => ({ ...current, game: "BLUE" }));
-    }
-  }, [language, selection.game]);
 
   return (
     <main className="dsum-shell">
@@ -69,7 +68,7 @@ export function DSumApp() {
       <SettingsPanel
         language={language}
         onGameChange={setGame}
-        onLanguageChange={setLanguage}
+        onLanguageChange={handleLanguageChange}
         onRouteChange={setRouteId}
         selection={selection}
       />
@@ -77,7 +76,7 @@ export function DSumApp() {
       <EncounterSlots
         game={localizedDataGame}
         language={language}
-        mode={encounterMode}
+        mode={resolvedEncounterMode}
         onModeChange={setEncounterMode}
         route={selectedRouteData}
         routeName={getRouteName(selectedRouteData.id, language)}

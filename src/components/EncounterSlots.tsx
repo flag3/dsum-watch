@@ -54,7 +54,7 @@ export function EncounterSlots({
       {activeEncounters.length > 0 ? (
         <SlotGrid encounters={activeEncounters} language={language} />
       ) : null}
-      {hasGroundEncounters === false && hasWaterEncounters === false ? (
+      {!hasGroundEncounters && !hasWaterEncounters ? (
         <p className="empty-slots">{getTranslation(language, "encounters.empty")}</p>
       ) : null}
     </section>

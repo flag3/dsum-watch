@@ -2,13 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { applyBattleTimeout, createInitialWatchState, toggleWatchState } from "../utils/dsumClock";
 import type { WatchState } from "../types";
 
-export interface DSumWatchController {
-  readonly state: WatchState;
-  readonly now: number;
-  readonly toggle: () => void;
-}
-
-export function useDSumWatches(): DSumWatchController {
+export function useDSumWatches() {
   const [now, setNow] = useState(() => Date.now());
   const [state, setState] = useState<WatchState>(() => createInitialWatchState(now));
 
