@@ -1,3 +1,5 @@
+import { Button } from "@primer/react";
+
 import { WATCH_CONFIGS } from "../constants/dsum";
 import { getTranslation } from "../i18n/i18n";
 import type { Game, Language, WatchPalette, WatchState } from "../types";
@@ -35,9 +37,7 @@ export function DSumWatchPair({
           </span>
         </div>
         <div className="watch-actions">
-          <button type="button" onClick={onToggle}>
-            {getTranslation(language, "watch.toggle")}
-          </button>
+          <Button onClick={onToggle}>{getTranslation(language, "watch.toggle")}</Button>
         </div>
       </header>
       <div className="watch-canvas-row">

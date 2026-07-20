@@ -1,3 +1,4 @@
+import { Link } from "@primer/react";
 import { useEffect, useState } from "react";
 
 import { GAME_ACCENTS } from "../constants/gameAccents";
@@ -57,9 +58,9 @@ export function DSumApp() {
           <h1>DSum Watch</h1>
           <p className="app-credit">
             {getTranslation(language, "app.credit.before")}
-            <a href="https://x.com/zunow150poke" rel="noreferrer" target="_blank">
+            <Link href="https://x.com/zunow150poke" rel="noreferrer" target="_blank">
               ずのう
-            </a>
+            </Link>
             {getTranslation(language, "app.credit.after")}
           </p>
         </div>

@@ -1,3 +1,5 @@
+import { SegmentedControl } from "@primer/react";
+
 import { getRouteEncounterState } from "../constants/localRoutes";
 import { formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
 import type { Encounter, EncounterMode, Game, Language, RouteData } from "../types";
@@ -33,25 +35,17 @@ export function EncounterSlots({
         </div>
         <div className="encounter-controls">
           {hasGroundEncounters && hasWaterEncounters ? (
-            <div
-              className="encounter-mode-toggle"
+            <SegmentedControl
               aria-label={getTranslation(language, "encounters.modeLabel")}
+              onChange={(selectedIndex) => onModeChange(selectedIndex === 1 ? "water" : "ground")}
             >
-              <button
-                aria-pressed={mode === "ground"}
-                onClick={() => onModeChange("ground")}
-                type="button"
-              >
+              <SegmentedControl.Button selected={mode === "ground"}>
                 {getTranslation(language, "encounters.ground")}
-              </button>
-              <button
-                aria-pressed={mode === "water"}
-                onClick={() => onModeChange("water")}
-                type="button"
-              >
+              </SegmentedControl.Button>
+              <SegmentedControl.Button selected={mode === "water"}>
                 {getTranslation(language, "encounters.water")}
-              </button>
-            </div>
+              </SegmentedControl.Button>
+            </SegmentedControl>
           ) : null}
           <span className="encounter-rate">{activeRate}</span>
         </div>

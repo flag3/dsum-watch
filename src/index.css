@@ -15,23 +15,3 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
-button {
-  border-radius: 8px;
-  border: 1px solid #c8d0dc;
-  padding: 8px 12px;
-  font: inherit;
-  color: #17202a;
-  background: #ffffff;
-  cursor: pointer;
-}
-
-button:hover {
-  border-color: #6f7f95;
-  background: #f7f9fc;
-}
-
-button:focus-visible {
-  outline: 3px solid #9db7e8;
-  outline-offset: 2px;
-}

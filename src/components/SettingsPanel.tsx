@@ -1,3 +1,5 @@
+import { FormControl, Select } from "@primer/react";
+
 import { ROUTES } from "../constants/localRoutes";
 import {
   getGameName,
@@ -26,50 +28,50 @@ export function SettingsPanel({
 }: SettingsPanelProps) {
   return (
     <section className="settings-panel" aria-label={getTranslation(language, "settings.label")}>
-      <div className="settings-field">
-        <label htmlFor="game">{getTranslation(language, "settings.game")}</label>
-        <select
-          id="game"
+      <FormControl>
+        <FormControl.Label>{getTranslation(language, "settings.game")}</FormControl.Label>
+        <Select
+          block
           onChange={(event) => onGameChange(event.target.value as Game)}
           value={selection.game}
         >
           {getSelectableGames(language).map((game) => (
-            <option key={game} value={game}>
+            <Select.Option key={game} value={game}>
               {getGameName(game, language)}
-            </option>
+            </Select.Option>
           ))}
-        </select>
-      </div>
+        </Select>
+      </FormControl>
 
-      <div className="settings-field route-field">
-        <label htmlFor="route">{getTranslation(language, "settings.route")}</label>
-        <select
-          id="route"
+      <FormControl>
+        <FormControl.Label>{getTranslation(language, "settings.route")}</FormControl.Label>
+        <Select
+          block
           onChange={(event) => onRouteChange(event.target.value)}
           value={selection.routeId}
         >
           {ROUTES.map((route) => (
-            <option key={route.id} value={route.id}>
+            <Select.Option key={route.id} value={route.id}>
               {getRouteName(route.id, language)}
-            </option>
+            </Select.Option>
           ))}
-        </select>
-      </div>
+        </Select>
+      </FormControl>
 
-      <div className="settings-field language-field">
-        <label htmlFor="language">{getTranslation(language, "settings.language")}</label>
-        <select
-          id="language"
+      <FormControl>
+        <FormControl.Label>{getTranslation(language, "settings.language")}</FormControl.Label>
+        <Select
+          block
           onChange={(event) => onLanguageChange(normalizeLanguage(event.target.value))}
           value={language}
         >
           {SUPPORTED_LANGUAGES.map((supportedLanguage) => (
-            <option key={supportedLanguage.id} value={supportedLanguage.id}>
+            <Select.Option key={supportedLanguage.id} value={supportedLanguage.id}>
               {supportedLanguage.name}
-            </option>
+            </Select.Option>
           ))}
-        </select>
-      </div>
+        </Select>
+      </FormControl>
     </section>
   );
 }
