@@ -6,15 +6,34 @@
   box-sizing: border-box;
   width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 28px;
+  padding: 18px;
 }
 
-.app-header {
+.app-header,
+.watch-pair-header,
+.encounter-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+}
+
+.app-header,
+.watch-pair-header {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.app-header {
   margin-bottom: 24px;
+}
+
+.encounter-slots,
+.settings-panel,
+.watch-pair {
+  border: 1px solid var(--borderColor-default);
+  border-radius: 8px;
+  background: var(--bgColor-default);
 }
 
 .eyebrow {
@@ -55,17 +74,10 @@ h2 {
 
 .encounter-slots {
   margin-bottom: 20px;
-  border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
   padding: 16px;
-  background: var(--bgColor-default);
 }
 
 .encounter-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   margin-bottom: 14px;
 }
 
@@ -88,9 +100,10 @@ h2 {
   font-weight: 700;
 }
 
+/* ponytail: 190px = longest name without ellipsis; also yields exactly 5 columns at the 1120px shell */
 .slot-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 8px;
 }
 
@@ -146,30 +159,20 @@ h2 {
 
 .settings-panel {
   display: grid;
-  grid-template-columns: minmax(120px, 180px) minmax(280px, 640px) minmax(120px, 180px);
+  grid-template-columns: 1fr;
   gap: 14px;
   align-items: end;
   justify-content: start;
   margin-bottom: 20px;
-  border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
   padding: 16px;
-  background: var(--bgColor-default);
 }
 
 .watch-pair {
-  border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
   padding: 18px;
-  background: var(--bgColor-default);
   box-shadow: var(--shadow-resting-medium);
 }
 
 .watch-pair-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
   margin-bottom: 16px;
 }
 
@@ -187,7 +190,7 @@ h2 {
 
 .watch-canvas-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  grid-template-columns: 1fr;
   gap: 12px;
   align-items: center;
 }
@@ -219,36 +222,24 @@ kbd {
   text-align: center;
 }
 
-@media (max-width: 860px) {
+@media (min-width: 34rem) {
+  .watch-canvas-row {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+}
+
+@media (min-width: 48rem) {
   .dsum-shell {
-    padding: 18px;
+    padding: 28px;
   }
 
   .app-header,
   .watch-pair-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .watch-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .slot-grid {
-    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    align-items: center;
+    flex-direction: row;
   }
 
   .settings-panel {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 460px) {
-  .watch-canvas-row {
-    grid-template-columns: 1fr;
-  }
-
-  .slot-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(120px, 180px) minmax(280px, 640px) minmax(120px, 180px);
   }
 }
