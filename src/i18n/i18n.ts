@@ -32,8 +32,8 @@ const TRANSLATIONS = {
     "encounters.empty": "この設定のエンカウントリストはありません。",
     "watch.battle": "戦闘中",
     "watch.field": "フィールド",
-    "watch.toggle": "切替",
-    "keyboard.space": "切替",
+    "watch.toggleToBattle": "戦闘開始",
+    "watch.toggleToField": "フィールドに戻る",
   },
   en: {
     "app.credit.before": "Published based on DSumWatch created by ",
@@ -50,8 +50,8 @@ const TRANSLATIONS = {
     "encounters.empty": "There is no encounter list for this setting.",
     "watch.battle": "In battle",
     "watch.field": "Field",
-    "watch.toggle": "Toggle",
-    "keyboard.space": "Toggle",
+    "watch.toggleToBattle": "Start battle",
+    "watch.toggleToField": "Return to field",
   },
 } as const;
 

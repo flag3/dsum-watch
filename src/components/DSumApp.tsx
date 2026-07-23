@@ -91,12 +91,6 @@ export function DSumApp() {
           state={state}
         />
       </div>
-
-      <footer className="keyboard-hints">
-        <span>
-          <kbd>Space</kbd> {getTranslation(language, "keyboard.space")}
-        </span>
-      </footer>
     </main>
   );
 }

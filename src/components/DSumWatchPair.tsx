@@ -1,4 +1,4 @@
-import { Button } from "@primer/react";
+import { Button, Label } from "@primer/react";
 
 import { WATCH_CONFIGS } from "../constants/dsum";
 import { getTranslation } from "../i18n/i18n";
@@ -14,18 +14,19 @@ interface DSumWatchPairProps {
 }
 
 export function DSumWatchPair({ game, language, state, onToggle, palette }: DSumWatchPairProps) {
+  const isBattle = state.phase === "battle";
+
   return (
     <section className="watch-pair" aria-label="DSum Watch">
       <header className="watch-pair-header">
-        <div>
-          <span className="phase-label">
-            {state.phase === "battle"
-              ? getTranslation(language, "watch.battle")
-              : getTranslation(language, "watch.field")}
-          </span>
-        </div>
+        <Label size="large" variant={isBattle ? "attention" : "secondary"}>
+          {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
+        </Label>
         <div className="watch-actions">
-          <Button onClick={onToggle}>{getTranslation(language, "watch.toggle")}</Button>
+          <Button onClick={onToggle}>
+            {getTranslation(language, isBattle ? "watch.toggleToField" : "watch.toggleToBattle")}
+          </Button>
+          <kbd aria-hidden="true">Space</kbd>
         </div>
       </header>
       <div className="watch-canvas-row">

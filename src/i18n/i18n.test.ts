@@ -16,7 +16,8 @@ describe("i18n", () => {
   it("returns English UI copy and localized names", () => {
     expect(getTranslation("en", "settings.game")).toBe("Version");
     expect(getTranslation("en", "encounters.title")).toBe("Encounter list");
-    expect(getTranslation("en", "watch.toggle")).toBe("Toggle");
+    expect(getTranslation("en", "watch.toggleToBattle")).toBe("Start battle");
+    expect(getTranslation("en", "watch.toggleToField")).toBe("Return to field");
     expect(getGameName("YELLOW", "en")).toBe("Yellow");
     expect(getRouteName("ROUTE_1", "en")).toBe("Route 1");
     expect(getPokemonName(16, "en", "ポッポ")).toBe("Pidgey");

@@ -149,16 +149,18 @@ h2 {
   font-size: 13px;
 }
 
+/* Mirrors the watch face's circled markers: white circle, #ddd stroke, black digits */
 .slot-index {
   display: inline-grid;
   width: 26px;
   height: 26px;
   place-items: center;
+  border: 1px solid #ddd;
   border-radius: 999px;
-  background: var(--bgColor-emphasis);
-  color: var(--fgColor-onEmphasis);
+  background: #fff;
+  color: rgb(0, 0, 0);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .empty-slots {
@@ -185,15 +187,9 @@ h2 {
   margin-bottom: 16px;
 }
 
-.phase-label {
-  display: inline-block;
-  margin-top: 6px;
-  color: var(--fgColor-muted);
-  font-size: 14px;
-}
-
 .watch-actions {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -210,25 +206,22 @@ h2 {
   aspect-ratio: 1;
 }
 
-.keyboard-hints {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 18px;
-  color: var(--fgColor-muted);
-  font-size: 14px;
-}
-
 kbd {
   display: inline-block;
   min-width: 20px;
-  margin-right: 4px;
   border: 1px solid var(--borderColor-default);
   border-radius: 4px;
   padding: 1px 6px;
   background: var(--bgColor-muted);
-  color: var(--fgColor-default);
+  color: var(--fgColor-muted);
+  font-size: 12px;
   text-align: center;
+}
+
+@media (pointer: coarse) {
+  kbd {
+    display: none;
+  }
 }
 
 @media (min-width: 34rem) {
