@@ -87,15 +87,11 @@ h2 {
   gap: 10px;
 }
 
+/* Readout, not a control: no box, so it can't be mistaken for a button */
 .encounter-rate {
-  display: inline-grid;
-  min-width: 48px;
-  justify-items: center;
-  gap: 2px;
-  border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
-  padding: 4px 10px;
-  background: var(--bgColor-muted);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
 }
 
 .encounter-rate span {
@@ -105,7 +101,7 @@ h2 {
 
 .encounter-rate strong {
   color: var(--fgColor-default);
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
 }
 
@@ -187,10 +183,26 @@ h2 {
   margin-bottom: 16px;
 }
 
-.watch-actions {
-  display: flex;
+/* Status indicator, not a badge: dot + text, attention color while in battle */
+.watch-phase {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  color: var(--fgColor-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.watch-phase::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentcolor;
+}
+
+.watch-phase[data-battle] {
+  color: var(--fgColor-attention);
 }
 
 .watch-canvas-row {
@@ -206,15 +218,16 @@ h2 {
   aspect-ratio: 1;
 }
 
+/* Shortcut hint nested inside the toggle button */
 kbd {
   display: inline-block;
-  min-width: 20px;
   border: 1px solid var(--borderColor-default);
   border-radius: 4px;
-  padding: 1px 6px;
+  padding: 0 4px;
   background: var(--bgColor-muted);
   color: var(--fgColor-muted);
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 16px;
   text-align: center;
 }
 
