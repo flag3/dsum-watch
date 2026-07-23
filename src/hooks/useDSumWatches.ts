@@ -1,31 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
+import { BATTLE_TIMEOUT_MS } from "../constants/dsum";
 import { applyBattleTimeout, createInitialWatchState, toggleWatchState } from "../utils/dsumClock";
 import type { WatchState } from "../types";
 
 export function useDSumWatches() {
-  const [now, setNow] = useState(() => Date.now());
-  const [state, setState] = useState<WatchState>(() => createInitialWatchState(now));
+  const [state, setState] = useState<WatchState>(() => createInitialWatchState(Date.now()));
 
   const toggle = useCallback(() => {
-    const currentNow = Date.now();
-    setNow(currentNow);
-    setState((currentState) => toggleWatchState(currentState, currentNow));
+    setState((currentState) => toggleWatchState(currentState, Date.now()));
   }, []);
 
   useEffect(() => {
-    let frameId = 0;
+    if (state.phase !== "battle") {
+      return;
+    }
 
-    const tick = () => {
-      const currentNow = Date.now();
-      setNow(currentNow);
-      setState((currentState) => applyBattleTimeout(currentState, currentNow));
-      frameId = window.requestAnimationFrame(tick);
-    };
+    // applyBattleTimeout requires elapsed > BATTLE_TIMEOUT_MS, so fire slightly after
+    const timeoutId = window.setTimeout(() => {
+      setState((currentState) => applyBattleTimeout(currentState, Date.now()));
+    }, BATTLE_TIMEOUT_MS + 50);
 
-    frameId = window.requestAnimationFrame(tick);
-
-    return () => window.cancelAnimationFrame(frameId);
-  }, []);
+    return () => window.clearTimeout(timeoutId);
+  }, [state]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -51,7 +47,6 @@ export function useDSumWatches() {
 
   return {
     state,
-    now,
     toggle,
   };
 }

@@ -47,7 +47,10 @@ export function EncounterSlots({
               </SegmentedControl.Button>
             </SegmentedControl>
           ) : null}
-          <span className="encounter-rate">{activeRate}</span>
+          <span className="encounter-rate">
+            <span>{getTranslation(language, "encounters.rate")}</span>
+            <strong>{activeRate}</strong>
+          </span>
         </div>
       </header>
 

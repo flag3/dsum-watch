@@ -9,17 +9,9 @@ interface DSumWatchCanvasProps {
   readonly language: Language;
   readonly palette: WatchPalette;
   readonly state: WatchState;
-  readonly now: number;
 }
 
-export function DSumWatchCanvas({
-  config,
-  game,
-  language,
-  palette,
-  state,
-  now,
-}: DSumWatchCanvasProps) {
+export function DSumWatchCanvas({ config, game, language, palette, state }: DSumWatchCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const label = getWatchCycleLabel(config, game);
 
@@ -29,15 +21,24 @@ export function DSumWatchCanvas({
       return;
     }
 
-    drawDSumWatch({
-      canvas,
-      config,
-      game,
-      palette,
-      state,
-      now,
-    });
-  }, [config, game, palette, state, now]);
+    let frameId = 0;
+
+    const tick = () => {
+      drawDSumWatch({
+        canvas,
+        config,
+        game,
+        palette,
+        state,
+        now: Date.now(),
+      });
+      frameId = window.requestAnimationFrame(tick);
+    };
+
+    tick();
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [config, game, palette, state]);
 
   return (
     <canvas

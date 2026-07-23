@@ -90,14 +90,23 @@ h2 {
 .encounter-rate {
   display: inline-grid;
   min-width: 48px;
-  min-height: 40px;
-  place-items: center;
+  justify-items: center;
+  gap: 2px;
   border: 1px solid var(--borderColor-default);
   border-radius: 8px;
+  padding: 4px 10px;
   background: var(--bgColor-muted);
+}
+
+.encounter-rate span {
+  color: var(--fgColor-muted);
+  font-size: 12px;
+}
+
+.encounter-rate strong {
   color: var(--fgColor-default);
   font-size: 20px;
-  font-weight: 700;
+  line-height: 1.2;
 }
 
 /* ponytail: 190px = longest name without ellipsis; also yields exactly 5 columns at the 1120px shell */

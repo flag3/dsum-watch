@@ -9,25 +9,13 @@ interface DSumWatchPairProps {
   readonly game: Game;
   readonly language: Language;
   readonly state: WatchState;
-  readonly now: number;
   readonly onToggle: () => void;
   readonly palette: WatchPalette;
 }
 
-export function DSumWatchPair({
-  game,
-  language,
-  state,
-  now,
-  onToggle,
-  palette,
-}: DSumWatchPairProps) {
+export function DSumWatchPair({ game, language, state, onToggle, palette }: DSumWatchPairProps) {
   return (
-    <section
-      className="watch-pair"
-      style={{ borderTopColor: palette.active }}
-      aria-label="DSum Watch"
-    >
+    <section className="watch-pair" aria-label="DSum Watch">
       <header className="watch-pair-header">
         <div>
           <span className="phase-label">
@@ -47,7 +35,6 @@ export function DSumWatchPair({
             game={game}
             key={config.label}
             language={language}
-            now={now}
             palette={palette}
             state={state}
           />

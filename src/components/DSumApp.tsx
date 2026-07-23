@@ -18,7 +18,7 @@ import { SettingsPanel } from "./SettingsPanel";
 const DEFAULT_SELECTION: SelectionConfig = { game: "RED", routeId: "ROUTE_1" };
 
 export function DSumApp() {
-  const { state, now, toggle } = useDSumWatches();
+  const { state, toggle } = useDSumWatches();
   const [encounterMode, setEncounterMode] = useState<EncounterMode>("ground");
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [selection, setSelection] = useState<SelectionConfig>(DEFAULT_SELECTION);
@@ -86,7 +86,6 @@ export function DSumApp() {
         <DSumWatchPair
           game={selection.game}
           language={language}
-          now={now}
           onToggle={toggle}
           palette={watchPalette}
           state={state}
