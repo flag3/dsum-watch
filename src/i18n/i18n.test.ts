@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  formatEncounterRate,
   formatLevel,
   formatSeconds,
   getGameName,
@@ -32,6 +33,11 @@ describe("i18n", () => {
     expect(getPokemonName(16, "ja", "Pidgey")).toBe("ポッポ");
     expect(formatLevel(3, "ja")).toBe("Lv 3");
     expect(formatSeconds("6.2", "ja")).toBe("6.2秒");
+  });
+
+  it("formats the encounter rate as a fraction of 256 with a percentage", () => {
+    expect(formatEncounterRate(25)).toBe("25/256 (9.8%)");
+    expect(formatEncounterRate(0)).toBe("0/256 (0.0%)");
   });
 
   it("uses the international version list for English", () => {

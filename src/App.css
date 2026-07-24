@@ -102,6 +102,7 @@ h2 {
 .encounter-rate strong {
   color: var(--fgColor-default);
   font-size: 16px;
+  font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
 

@@ -120,6 +120,11 @@ export function formatLevel(level: number, language: Language): string {
   return language === "en" ? `Lv. ${level}` : `Lv ${level}`;
 }
 
+/* GB internal encounter rate is x/256; show the raw value with its percentage */
+export function formatEncounterRate(rate: number): string {
+  return `${rate}/256 (${((rate / 256) * 100).toFixed(1)}%)`;
+}
+
 export function formatSeconds(label: string, language: Language): string {
   return language === "en" ? `${label} sec` : `${label}秒`;
 }

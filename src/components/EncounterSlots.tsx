@@ -1,7 +1,7 @@
 import { SegmentedControl } from "@primer/react";
 
 import { getRouteEncounterState } from "../constants/localRoutes";
-import { formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
+import { formatEncounterRate, formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
 import type { Encounter, EncounterMode, Game, Language, RouteData } from "../types";
 
 interface EncounterSlotsProps {
@@ -49,7 +49,7 @@ export function EncounterSlots({
           ) : null}
           <span className="encounter-rate">
             <span>{getTranslation(language, "encounters.rate")}</span>
-            <strong>{activeRate}</strong>
+            <strong>{formatEncounterRate(activeRate)}</strong>
           </span>
         </div>
       </header>
