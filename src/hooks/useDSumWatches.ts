@@ -26,7 +26,9 @@ export function useDSumWatches() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
+      // BUTTON included: let a focused button keep its native Space press
       if (
+        target?.tagName === "BUTTON" ||
         target?.tagName === "INPUT" ||
         target?.tagName === "SELECT" ||
         target?.tagName === "TEXTAREA"
