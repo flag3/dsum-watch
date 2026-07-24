@@ -19,7 +19,8 @@
 }
 
 .app-header,
-.watch-pair-header {
+.watch-pair-header,
+.encounter-header {
   align-items: flex-start;
   flex-direction: column;
 }
@@ -250,7 +251,8 @@ kbd {
   }
 
   .app-header,
-  .watch-pair-header {
+  .watch-pair-header,
+  .encounter-header {
     align-items: center;
     flex-direction: row;
   }
