@@ -65,11 +65,12 @@ h2 {
   font-size: 22px;
 }
 
+/* 650px = canvas 300 x 2 + row gap 12 + card padding 18 x 2 + border 1 x 2 */
 .watch-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-  max-width: 760px;
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -214,9 +215,12 @@ h2 {
   align-items: center;
 }
 
+/* Render resolution is fixed at 300px in dsumClock.ts; never upscale past it */
 .dsum-watch-canvas {
   display: block;
   width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
   aspect-ratio: 1;
 }
 
