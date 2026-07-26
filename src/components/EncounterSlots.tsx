@@ -1,4 +1,4 @@
-import { SegmentedControl } from "@primer/react";
+import { Heading, SegmentedControl, Text } from "@primer/react";
 
 import { getRouteEncounterState } from "../constants/localRoutes";
 import { formatEncounterRate, formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
@@ -30,8 +30,12 @@ export function EncounterSlots({
     <section className="encounter-slots" aria-label={getTranslation(language, "encounters.title")}>
       <header className="encounter-header">
         <div>
-          <p className="eyebrow">{getTranslation(language, "encounters.title")}</p>
-          <h2>{routeName}</h2>
+          <Text as="p" className="eyebrow">
+            {getTranslation(language, "encounters.title")}
+          </Text>
+          <Heading as="h2" variant="medium">
+            {routeName}
+          </Heading>
         </div>
         <div className="encounter-controls">
           {hasGroundEncounters && hasWaterEncounters ? (
@@ -58,7 +62,9 @@ export function EncounterSlots({
         <SlotGrid encounters={activeEncounters} language={language} />
       ) : null}
       {!hasGroundEncounters && !hasWaterEncounters ? (
-        <p className="empty-slots">{getTranslation(language, "encounters.empty")}</p>
+        <Text as="p" className="empty-slots">
+          {getTranslation(language, "encounters.empty")}
+        </Text>
       ) : null}
     </section>
   );

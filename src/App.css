@@ -1,28 +1,16 @@
-#root {
-  min-height: 100vh;
-}
-
 .dsum-shell {
-  box-sizing: border-box;
   width: min(1120px, 100%);
   margin: 0 auto;
   padding: 18px;
 }
 
-.app-header,
 .watch-pair-header,
 .encounter-header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-}
-
-.app-header,
-.watch-pair-header,
-.encounter-header {
-  align-items: flex-start;
-  flex-direction: column;
 }
 
 .app-header {
@@ -43,33 +31,14 @@
   font-size: 14px;
 }
 
-h1,
-h2 {
-  margin: 0;
-  line-height: 1.1;
-}
-
-h1 {
-  font-size: 34px;
-}
-
 .app-credit {
-  max-width: 680px;
   margin: 10px 0 0;
   color: var(--fgColor-muted);
   font-size: 14px;
-  line-height: 1.6;
-}
-
-h2 {
-  font-size: 22px;
 }
 
 /* 650px = canvas 300 x 2 + row gap 12 + card padding 18 x 2 + border 1 x 2 */
 .watch-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
   max-width: 650px;
   margin: 0 auto;
 }
@@ -102,8 +71,6 @@ h2 {
 }
 
 .encounter-rate strong {
-  color: var(--fgColor-default);
-  font-size: 16px;
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
@@ -120,7 +87,6 @@ h2 {
   grid-template-columns: 26px minmax(0, 1fr);
   gap: 8px;
   align-items: center;
-  min-height: 42px;
   border: 1px solid var(--borderColor-default);
   border-radius: 8px;
   padding: 8px 10px;
@@ -129,8 +95,6 @@ h2 {
 
 .slot-card strong {
   overflow: hidden;
-  color: var(--fgColor-default);
-  font-size: 16px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -159,7 +123,6 @@ h2 {
   background: #fff;
   color: rgb(0, 0, 0);
   font-size: 13px;
-  font-weight: 400;
 }
 
 .empty-slots {
@@ -171,8 +134,6 @@ h2 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 14px;
-  align-items: end;
-  justify-content: start;
   margin-bottom: 20px;
   padding: 16px;
 }
@@ -254,7 +215,6 @@ kbd {
     padding: 28px;
   }
 
-  .app-header,
   .watch-pair-header,
   .encounter-header {
     align-items: center;

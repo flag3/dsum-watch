@@ -1,4 +1,4 @@
-import { Link } from "@primer/react";
+import { Heading, Link, Text } from "@primer/react";
 import { useEffect, useState } from "react";
 
 import { GAME_ACCENTS } from "../constants/gameAccents";
@@ -54,14 +54,14 @@ export function DSumApp() {
     <main className="dsum-shell">
       <header className="app-header">
         <div>
-          <h1>DSum Watch</h1>
-          <p className="app-credit">
+          <Heading as="h1">DSum Watch</Heading>
+          <Text as="p" className="app-credit">
             {getTranslation(language, "app.credit.before")}
             <Link href="https://x.com/zunow150poke" rel="noreferrer" target="_blank">
               ずのう
             </Link>
             {getTranslation(language, "app.credit.after")}
-          </p>
+          </Text>
         </div>
       </header>
 
