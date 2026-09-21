@@ -1,4 +1,4 @@
-import { Button, Label } from "@primer/react";
+import { Button, Label, Stack } from "@primer/react";
 import { KeybindingHint } from "@primer/react/experimental";
 
 import { WATCH_CONFIGS } from "../constants/dsum";
@@ -23,14 +23,20 @@ export function DSumWatchPair({ game, language, state, onToggle, palette }: DSum
 
   return (
     <section className="watch-pair" aria-label="DSum Watch">
-      <header className="watch-pair-header">
+      <Stack
+        as="header"
+        className="watch-pair-header"
+        direction="horizontal"
+        align="center"
+        justify="space-between"
+      >
         <Label variant={isBattle ? "attention" : "secondary"}>
           {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
         </Label>
         <Button onClick={onToggle} size="small" trailingVisual={SpaceHint}>
           {getTranslation(language, isBattle ? "watch.toggleToField" : "watch.toggleToBattle")}
         </Button>
-      </header>
+      </Stack>
       <div className="watch-canvas-row">
         {WATCH_CONFIGS.map((config) => (
           <DSumWatchCanvas

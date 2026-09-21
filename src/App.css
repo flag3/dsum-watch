@@ -4,15 +4,6 @@
   padding: var(--base-size-16);
 }
 
-.watch-pair-header,
-.encounter-header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--base-size-16);
-}
-
 .app-header {
   margin-bottom: var(--base-size-24);
 }
@@ -52,19 +43,7 @@
   margin-bottom: var(--base-size-16);
 }
 
-.encounter-controls {
-  display: flex;
-  align-items: center;
-  gap: var(--base-size-8);
-}
-
 /* Readout, not a control: no box, so it can't be mistaken for a button */
-.encounter-rate {
-  display: inline-flex;
-  align-items: baseline;
-  gap: var(--base-size-4);
-}
-
 .encounter-rate span {
   color: var(--fgColor-muted);
   font-size: 12px;
@@ -100,10 +79,7 @@
 }
 
 .slot-detail {
-  display: flex;
   min-width: 0;
-  align-items: baseline;
-  gap: var(--base-size-8);
 }
 
 .slot-detail span {
@@ -173,12 +149,6 @@
 @media (min-width: 48rem) {
   .dsum-shell {
     padding: var(--base-size-24);
-  }
-
-  .watch-pair-header,
-  .encounter-header {
-    align-items: center;
-    flex-direction: row;
   }
 
   .settings-panel {

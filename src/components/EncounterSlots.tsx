@@ -1,4 +1,4 @@
-import { Heading, SegmentedControl, Text } from "@primer/react";
+import { Heading, SegmentedControl, Stack, Text } from "@primer/react";
 import { Blankslate } from "@primer/react/experimental";
 
 import { getRouteEncounterState } from "../constants/localRoutes";
@@ -29,7 +29,14 @@ export function EncounterSlots({
 
   return (
     <section className="encounter-slots" aria-label={getTranslation(language, "encounters.title")}>
-      <header className="encounter-header">
+      <Stack
+        as="header"
+        className="encounter-header"
+        direction="horizontal"
+        align="center"
+        wrap="wrap"
+        justify="space-between"
+      >
         <div>
           <Text as="p" className="eyebrow">
             {getTranslation(language, "encounters.title")}
@@ -38,7 +45,7 @@ export function EncounterSlots({
             {routeName}
           </Heading>
         </div>
-        <div className="encounter-controls">
+        <Stack direction="horizontal" align="center" gap="condensed">
           {hasGroundEncounters && hasWaterEncounters ? (
             <SegmentedControl
               aria-label={getTranslation(language, "encounters.modeLabel")}
@@ -52,12 +59,18 @@ export function EncounterSlots({
               </SegmentedControl.Button>
             </SegmentedControl>
           ) : null}
-          <span className="encounter-rate">
+          <Stack
+            as="span"
+            className="encounter-rate"
+            direction="horizontal"
+            align="baseline"
+            gap="tight"
+          >
             <span>{getTranslation(language, "encounters.rate")}</span>
             <strong>{formatEncounterRate(activeRate)}</strong>
-          </span>
-        </div>
-      </header>
+          </Stack>
+        </Stack>
+      </Stack>
 
       {activeEncounters.length > 0 ? (
         <SlotGrid encounters={activeEncounters} language={language} />
@@ -85,10 +98,16 @@ function SlotGrid({
       {encounters.map((encounter, index) => (
         <article className="slot-card" key={`${index}-${encounter.dex}-${encounter.level}`}>
           <span className="slot-index">{index + 1}</span>
-          <span className="slot-detail">
+          <Stack
+            as="span"
+            className="slot-detail"
+            direction="horizontal"
+            align="baseline"
+            gap="condensed"
+          >
             <strong>{getPokemonName(encounter.dex, language, String(encounter.dex))}</strong>
             <span>{formatLevel(encounter.level, language)}</span>
-          </span>
+          </Stack>
         </article>
       ))}
     </div>
