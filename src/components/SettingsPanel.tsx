@@ -1,5 +1,6 @@
-import { FormControl, Select } from "@primer/react";
+import { ActionMenu, FormControl, Select, SelectPanel } from "@primer/react";
 import { Card } from "@primer/react/experimental";
+import { useState } from "react";
 
 import { ROUTES } from "../constants/localRoutes";
 import {
@@ -27,6 +28,16 @@ export function SettingsPanel({
   onLanguageChange,
   onRouteChange,
 }: SettingsPanelProps) {
+  const [routePanelOpen, setRoutePanelOpen] = useState(false);
+  const [routeFilter, setRouteFilter] = useState("");
+  const routeItems = ROUTES.map((route) => ({
+    id: route.id,
+    text: getRouteName(route.id, language),
+  }));
+  const filteredRouteItems = routeItems.filter((item) =>
+    item.text.toLowerCase().includes(routeFilter.trim().toLowerCase()),
+  );
+
   return (
     <Card
       as="section"
@@ -52,17 +63,37 @@ export function SettingsPanel({
 
         <FormControl>
           <FormControl.Label>{getTranslation(language, "settings.route")}</FormControl.Label>
-          <Select
-            block
-            onChange={(event) => onRouteChange(event.target.value)}
-            value={selection.routeId}
-          >
-            {ROUTES.map((route) => (
-              <Select.Option key={route.id} value={route.id}>
-                {getRouteName(route.id, language)}
-              </Select.Option>
-            ))}
-          </Select>
+          <SelectPanel
+            height="xlarge"
+            open={routePanelOpen}
+            onOpenChange={(open) => {
+              setRoutePanelOpen(open);
+              setRouteFilter("");
+            }}
+            selected={routeItems.find((item) => item.id === selection.routeId)}
+            onSelectedChange={(item: { id?: string | number } | undefined) => {
+              if (typeof item?.id === "string") onRouteChange(item.id);
+            }}
+            items={filteredRouteItems}
+            filterValue={routeFilter}
+            onFilterChange={setRouteFilter}
+            title={getTranslation(language, "settings.route")}
+            placeholderText={getTranslation(language, "settings.routeSearch")}
+            message={
+              filteredRouteItems.length === 0
+                ? {
+                    variant: "empty",
+                    title: getTranslation(language, "settings.routeEmpty"),
+                    body: "",
+                  }
+                : undefined
+            }
+            renderAnchor={({ children, ...props }) => (
+              <ActionMenu.Button {...props} block alignContent="start">
+                {children}
+              </ActionMenu.Button>
+            )}
+          />
         </FormControl>
 
         <FormControl>
