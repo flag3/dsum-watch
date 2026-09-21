@@ -38,7 +38,7 @@ export function EncounterSlots({
         justify="space-between"
       >
         <div>
-          <Text as="p" className="eyebrow">
+          <Text as="p" className="eyebrow" size="small">
             {getTranslation(language, "encounters.title")}
           </Text>
           <Heading as="h2" variant="medium">
@@ -66,8 +66,10 @@ export function EncounterSlots({
             align="baseline"
             gap="tight"
           >
-            <span>{getTranslation(language, "encounters.rate")}</span>
-            <strong>{formatEncounterRate(activeRate)}</strong>
+            <Text size="small">{getTranslation(language, "encounters.rate")}</Text>
+            <Text as="strong" weight="semibold">
+              {formatEncounterRate(activeRate)}
+            </Text>
           </Stack>
         </Stack>
       </Stack>
@@ -105,8 +107,10 @@ function SlotGrid({
             align="baseline"
             gap="condensed"
           >
-            <strong>{getPokemonName(encounter.dex, language, String(encounter.dex))}</strong>
-            <span>{formatLevel(encounter.level, language)}</span>
+            <Text as="strong" weight="semibold">
+              {getPokemonName(encounter.dex, language, String(encounter.dex))}
+            </Text>
+            <Text size="small">{formatLevel(encounter.level, language)}</Text>
           </Stack>
         </article>
       ))}

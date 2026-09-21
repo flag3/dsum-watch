@@ -1,11 +1,6 @@
 .dsum-shell {
   width: min(1120px, 100%);
   margin: 0 auto;
-  padding: var(--base-size-16);
-}
-
-.app-header {
-  margin-bottom: var(--base-size-24);
 }
 
 .encounter-slots,
@@ -19,23 +14,21 @@
 .eyebrow {
   margin: 0 0 var(--base-size-4);
   color: var(--fgColor-muted);
-  font-size: 14px;
 }
 
 .app-credit {
   margin: var(--base-size-8) 0 0;
   color: var(--fgColor-muted);
-  font-size: 14px;
 }
 
 /* Two 300px canvases + gap + card padding + borders. */
 .watch-grid {
+  width: 100%;
   max-width: calc(600px + var(--base-size-12) + 2 * var(--base-size-16) + 2px);
   margin: 0 auto;
 }
 
 .encounter-slots {
-  margin-bottom: var(--base-size-24);
   padding: var(--base-size-16);
 }
 
@@ -46,7 +39,6 @@
 /* Readout, not a control: no box, so it can't be mistaken for a button */
 .encounter-rate span {
   color: var(--fgColor-muted);
-  font-size: 12px;
 }
 
 .encounter-rate strong {
@@ -85,7 +77,6 @@
 .slot-detail span {
   flex: 0 0 auto;
   color: var(--fgColor-muted);
-  font-size: 13px;
 }
 
 /* Mirrors the watch face's circled markers: white circle, #ddd stroke, black digits */
@@ -105,7 +96,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--base-size-16);
-  margin-bottom: var(--base-size-24);
   padding: var(--base-size-16);
 }
 
@@ -147,10 +137,6 @@
 }
 
 @media (min-width: 48rem) {
-  .dsum-shell {
-    padding: var(--base-size-24);
-  }
-
   .settings-panel {
     grid-template-columns: minmax(120px, 180px) minmax(280px, 640px) minmax(120px, 180px);
   }
