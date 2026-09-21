@@ -1,7 +1,7 @@
 .dsum-shell {
   width: min(1120px, 100%);
   margin: 0 auto;
-  padding: 18px;
+  padding: var(--base-size-16);
 }
 
 .watch-pair-header,
@@ -10,59 +10,59 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: var(--base-size-16);
 }
 
 .app-header {
-  margin-bottom: 24px;
+  margin-bottom: var(--base-size-24);
 }
 
 .encounter-slots,
 .settings-panel,
 .watch-pair {
   border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
+  border-radius: var(--borderRadius-default);
   background: var(--bgColor-default);
 }
 
 .eyebrow {
-  margin: 0 0 4px;
+  margin: 0 0 var(--base-size-4);
   color: var(--fgColor-muted);
   font-size: 14px;
 }
 
 .app-credit {
-  margin: 10px 0 0;
+  margin: var(--base-size-8) 0 0;
   color: var(--fgColor-muted);
   font-size: 14px;
 }
 
-/* 650px = canvas 300 x 2 + row gap 12 + card padding 18 x 2 + border 1 x 2 */
+/* Two 300px canvases + gap + card padding + borders. */
 .watch-grid {
-  max-width: 650px;
+  max-width: calc(600px + var(--base-size-12) + 2 * var(--base-size-16) + 2px);
   margin: 0 auto;
 }
 
 .encounter-slots {
-  margin-bottom: 20px;
-  padding: 16px;
+  margin-bottom: var(--base-size-24);
+  padding: var(--base-size-16);
 }
 
 .encounter-header {
-  margin-bottom: 14px;
+  margin-bottom: var(--base-size-16);
 }
 
 .encounter-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--base-size-8);
 }
 
 /* Readout, not a control: no box, so it can't be mistaken for a button */
 .encounter-rate {
   display: inline-flex;
   align-items: baseline;
-  gap: 6px;
+  gap: var(--base-size-4);
 }
 
 .encounter-rate span {
@@ -79,17 +79,17 @@
 .slot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 8px;
+  gap: var(--base-size-8);
 }
 
 .slot-card {
   display: grid;
   grid-template-columns: 26px minmax(0, 1fr);
-  gap: 8px;
+  gap: var(--base-size-8);
   align-items: center;
   border: 1px solid var(--borderColor-default);
-  border-radius: 8px;
-  padding: 8px 10px;
+  border-radius: var(--borderRadius-default);
+  padding: var(--base-size-8) var(--base-size-12);
   background: var(--bgColor-muted);
 }
 
@@ -103,7 +103,7 @@
   display: flex;
   min-width: 0;
   align-items: baseline;
-  gap: 8px;
+  gap: var(--base-size-8);
 }
 
 .slot-detail span {
@@ -125,54 +125,27 @@
   font-size: 13px;
 }
 
-.empty-slots {
-  margin: 0;
-  color: var(--fgColor-muted);
-}
-
 .settings-panel {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin-bottom: 20px;
-  padding: 16px;
+  gap: var(--base-size-16);
+  margin-bottom: var(--base-size-24);
+  padding: var(--base-size-16);
 }
 
 .watch-pair {
-  padding: 18px;
+  padding: var(--base-size-16);
   box-shadow: var(--shadow-resting-medium);
 }
 
 .watch-pair-header {
-  margin-bottom: 16px;
-}
-
-/* Status indicator, not a badge: dot + text, attention color while in battle */
-.watch-phase {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--fgColor-muted);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.watch-phase::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: currentcolor;
-}
-
-.watch-phase[data-battle] {
-  color: var(--fgColor-attention);
+  margin-bottom: var(--base-size-16);
 }
 
 .watch-canvas-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: var(--base-size-12);
   align-items: center;
 }
 
@@ -185,21 +158,8 @@
   aspect-ratio: 1;
 }
 
-/* Shortcut hint nested inside the toggle button */
-kbd {
-  display: inline-block;
-  border: 1px solid var(--borderColor-default);
-  border-radius: 4px;
-  padding: 0 4px;
-  background: var(--bgColor-muted);
-  color: var(--fgColor-muted);
-  font-size: 11px;
-  line-height: 16px;
-  text-align: center;
-}
-
 @media (pointer: coarse) {
-  kbd {
+  .space-hint {
     display: none;
   }
 }
@@ -212,7 +172,7 @@ kbd {
 
 @media (min-width: 48rem) {
   .dsum-shell {
-    padding: 28px;
+    padding: var(--base-size-24);
   }
 
   .watch-pair-header,

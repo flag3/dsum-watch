@@ -1,4 +1,5 @@
-import { Button } from "@primer/react";
+import { Button, Label } from "@primer/react";
+import { KeybindingHint } from "@primer/react/experimental";
 
 import { WATCH_CONFIGS } from "../constants/dsum";
 import { getTranslation } from "../i18n/i18n";
@@ -6,7 +7,7 @@ import type { Game, Language, WatchPalette, WatchState } from "../types";
 import { DSumWatchCanvas } from "./DSumWatchCanvas";
 
 function SpaceHint() {
-  return <kbd aria-hidden="true">Space</kbd>;
+  return <KeybindingHint className="space-hint" keys="Space" format="full" size="small" />;
 }
 
 interface DSumWatchPairProps {
@@ -23,9 +24,9 @@ export function DSumWatchPair({ game, language, state, onToggle, palette }: DSum
   return (
     <section className="watch-pair" aria-label="DSum Watch">
       <header className="watch-pair-header">
-        <span className="watch-phase" data-battle={isBattle || undefined}>
+        <Label variant={isBattle ? "attention" : "secondary"}>
           {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
-        </span>
+        </Label>
         <Button onClick={onToggle} size="small" trailingVisual={SpaceHint}>
           {getTranslation(language, isBattle ? "watch.toggleToField" : "watch.toggleToBattle")}
         </Button>

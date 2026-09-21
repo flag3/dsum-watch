@@ -1,4 +1,5 @@
 import { Heading, SegmentedControl, Text } from "@primer/react";
+import { Blankslate } from "@primer/react/experimental";
 
 import { getRouteEncounterState } from "../constants/localRoutes";
 import { formatEncounterRate, formatLevel, getPokemonName, getTranslation } from "../i18n/i18n";
@@ -62,9 +63,11 @@ export function EncounterSlots({
         <SlotGrid encounters={activeEncounters} language={language} />
       ) : null}
       {!hasGroundEncounters && !hasWaterEncounters ? (
-        <Text as="p" className="empty-slots">
-          {getTranslation(language, "encounters.empty")}
-        </Text>
+        <Blankslate size="small">
+          <Blankslate.Description>
+            {getTranslation(language, "encounters.empty")}
+          </Blankslate.Description>
+        </Blankslate>
       ) : null}
     </section>
   );

@@ -1,5 +1,7 @@
 import App from "./App.tsx";
 import "@primer/primitives/dist/css/functional/themes/light.css";
+import "@primer/primitives/dist/css/base/size/size.css";
+import "@primer/primitives/dist/css/functional/size/radius.css";
 import "./index.css";
 import { BaseStyles, ThemeProvider } from "@primer/react";
 import { StrictMode } from "react";
