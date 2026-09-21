@@ -28,14 +28,6 @@
   margin: 0 auto;
 }
 
-.encounter-slots {
-  padding: var(--base-size-16);
-}
-
-.encounter-header {
-  margin-bottom: var(--base-size-16);
-}
-
 /* Readout, not a control: no box, so it can't be mistaken for a button */
 .encounter-rate span {
   color: var(--fgColor-muted);
@@ -100,12 +92,7 @@
 }
 
 .watch-pair {
-  padding: var(--base-size-16);
   box-shadow: var(--shadow-resting-medium);
-}
-
-.watch-pair-header {
-  margin-bottom: var(--base-size-16);
 }
 
 .watch-canvas-row {

@@ -28,15 +28,13 @@ export function EncounterSlots({
   const activeRate = mode === "water" ? route.waterEncounterRate[game] : route.encounterRate[game];
 
   return (
-    <section className="encounter-slots" aria-label={getTranslation(language, "encounters.title")}>
-      <Stack
-        as="header"
-        className="encounter-header"
-        direction="horizontal"
-        align="center"
-        wrap="wrap"
-        justify="space-between"
-      >
+    <Stack
+      as="section"
+      className="encounter-slots"
+      aria-label={getTranslation(language, "encounters.title")}
+      padding="normal"
+    >
+      <Stack as="header" direction="horizontal" align="center" wrap="wrap" justify="space-between">
         <div>
           <Text as="p" className="eyebrow" size="small">
             {getTranslation(language, "encounters.title")}
@@ -84,7 +82,7 @@ export function EncounterSlots({
           </Blankslate.Description>
         </Blankslate>
       ) : null}
-    </section>
+    </Stack>
   );
 }
 

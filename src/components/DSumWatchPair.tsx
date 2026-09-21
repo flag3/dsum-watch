@@ -22,14 +22,8 @@ export function DSumWatchPair({ game, language, state, onToggle, palette }: DSum
   const isBattle = state.phase === "battle";
 
   return (
-    <section className="watch-pair" aria-label="DSum Watch">
-      <Stack
-        as="header"
-        className="watch-pair-header"
-        direction="horizontal"
-        align="center"
-        justify="space-between"
-      >
+    <Stack as="section" className="watch-pair" aria-label="DSum Watch" padding="normal">
+      <Stack as="header" direction="horizontal" align="center" justify="space-between">
         <Label variant={isBattle ? "attention" : "secondary"}>
           {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
         </Label>
@@ -49,6 +43,6 @@ export function DSumWatchPair({ game, language, state, onToggle, palette }: DSum
           />
         ))}
       </div>
-    </section>
+    </Stack>
   );
 }
