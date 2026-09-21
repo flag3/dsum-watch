@@ -1,5 +1,5 @@
 import { Button, Label, Stack } from "@primer/react";
-import { KeybindingHint } from "@primer/react/experimental";
+import { Card, KeybindingHint } from "@primer/react/experimental";
 
 import { WATCH_CONFIGS } from "../constants/dsum";
 import { getTranslation } from "../i18n/i18n";
@@ -22,27 +22,35 @@ export function DSumWatchPair({ game, language, state, onToggle, palette }: DSum
   const isBattle = state.phase === "battle";
 
   return (
-    <Stack as="section" className="watch-pair" aria-label="DSum Watch" padding="normal">
-      <Stack as="header" direction="horizontal" align="center" justify="space-between">
-        <Label variant={isBattle ? "attention" : "secondary"}>
-          {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
-        </Label>
-        <Button onClick={onToggle} size="small" trailingVisual={SpaceHint}>
-          {getTranslation(language, isBattle ? "watch.toggleToField" : "watch.toggleToBattle")}
-        </Button>
+    <Card
+      as="section"
+      className="watch-pair"
+      aria-label="DSum Watch"
+      borderRadius="medium"
+      padding="none"
+    >
+      <Stack padding="normal">
+        <Stack as="header" direction="horizontal" align="center" justify="space-between">
+          <Label variant={isBattle ? "attention" : "secondary"}>
+            {getTranslation(language, isBattle ? "watch.battle" : "watch.field")}
+          </Label>
+          <Button onClick={onToggle} size="small" trailingVisual={SpaceHint}>
+            {getTranslation(language, isBattle ? "watch.toggleToField" : "watch.toggleToBattle")}
+          </Button>
+        </Stack>
+        <div className="watch-canvas-row">
+          {WATCH_CONFIGS.map((config) => (
+            <DSumWatchCanvas
+              config={config}
+              game={game}
+              key={config.label}
+              language={language}
+              palette={palette}
+              state={state}
+            />
+          ))}
+        </div>
       </Stack>
-      <div className="watch-canvas-row">
-        {WATCH_CONFIGS.map((config) => (
-          <DSumWatchCanvas
-            config={config}
-            game={game}
-            key={config.label}
-            language={language}
-            palette={palette}
-            state={state}
-          />
-        ))}
-      </div>
-    </Stack>
+    </Card>
   );
 }

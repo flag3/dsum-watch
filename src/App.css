@@ -3,14 +3,6 @@
   margin: 0 auto;
 }
 
-.encounter-slots,
-.settings-panel,
-.watch-pair {
-  border: 1px solid var(--borderColor-default);
-  border-radius: var(--borderRadius-default);
-  background: var(--bgColor-default);
-}
-
 .eyebrow {
   margin: 0 0 var(--base-size-4);
   color: var(--fgColor-muted);
@@ -45,15 +37,15 @@
   gap: var(--base-size-8);
 }
 
+.slot-grid > [data-component="Card"] {
+  background: var(--bgColor-muted);
+}
+
 .slot-card {
   display: grid;
   grid-template-columns: 26px minmax(0, 1fr);
   gap: var(--base-size-8);
   align-items: center;
-  border: 1px solid var(--borderColor-default);
-  border-radius: var(--borderRadius-default);
-  padding: var(--base-size-8) var(--base-size-12);
-  background: var(--bgColor-muted);
 }
 
 .slot-card strong {

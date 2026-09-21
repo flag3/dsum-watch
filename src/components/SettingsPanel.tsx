@@ -1,4 +1,5 @@
 import { FormControl, Select } from "@primer/react";
+import { Card } from "@primer/react/experimental";
 
 import { ROUTES } from "../constants/localRoutes";
 import {
@@ -27,51 +28,58 @@ export function SettingsPanel({
   onRouteChange,
 }: SettingsPanelProps) {
   return (
-    <section className="settings-panel" aria-label={getTranslation(language, "settings.label")}>
-      <FormControl>
-        <FormControl.Label>{getTranslation(language, "settings.game")}</FormControl.Label>
-        <Select
-          block
-          onChange={(event) => onGameChange(event.target.value as Game)}
-          value={selection.game}
-        >
-          {getSelectableGames(language).map((game) => (
-            <Select.Option key={game} value={game}>
-              {getGameName(game, language)}
-            </Select.Option>
-          ))}
-        </Select>
-      </FormControl>
+    <Card
+      as="section"
+      aria-label={getTranslation(language, "settings.label")}
+      borderRadius="medium"
+      padding="none"
+    >
+      <div className="settings-panel">
+        <FormControl>
+          <FormControl.Label>{getTranslation(language, "settings.game")}</FormControl.Label>
+          <Select
+            block
+            onChange={(event) => onGameChange(event.target.value as Game)}
+            value={selection.game}
+          >
+            {getSelectableGames(language).map((game) => (
+              <Select.Option key={game} value={game}>
+                {getGameName(game, language)}
+              </Select.Option>
+            ))}
+          </Select>
+        </FormControl>
 
-      <FormControl>
-        <FormControl.Label>{getTranslation(language, "settings.route")}</FormControl.Label>
-        <Select
-          block
-          onChange={(event) => onRouteChange(event.target.value)}
-          value={selection.routeId}
-        >
-          {ROUTES.map((route) => (
-            <Select.Option key={route.id} value={route.id}>
-              {getRouteName(route.id, language)}
-            </Select.Option>
-          ))}
-        </Select>
-      </FormControl>
+        <FormControl>
+          <FormControl.Label>{getTranslation(language, "settings.route")}</FormControl.Label>
+          <Select
+            block
+            onChange={(event) => onRouteChange(event.target.value)}
+            value={selection.routeId}
+          >
+            {ROUTES.map((route) => (
+              <Select.Option key={route.id} value={route.id}>
+                {getRouteName(route.id, language)}
+              </Select.Option>
+            ))}
+          </Select>
+        </FormControl>
 
-      <FormControl>
-        <FormControl.Label>{getTranslation(language, "settings.language")}</FormControl.Label>
-        <Select
-          block
-          onChange={(event) => onLanguageChange(normalizeLanguage(event.target.value))}
-          value={language}
-        >
-          {SUPPORTED_LANGUAGES.map((supportedLanguage) => (
-            <Select.Option key={supportedLanguage.id} value={supportedLanguage.id}>
-              {supportedLanguage.name}
-            </Select.Option>
-          ))}
-        </Select>
-      </FormControl>
-    </section>
+        <FormControl>
+          <FormControl.Label>{getTranslation(language, "settings.language")}</FormControl.Label>
+          <Select
+            block
+            onChange={(event) => onLanguageChange(normalizeLanguage(event.target.value))}
+            value={language}
+          >
+            {SUPPORTED_LANGUAGES.map((supportedLanguage) => (
+              <Select.Option key={supportedLanguage.id} value={supportedLanguage.id}>
+                {supportedLanguage.name}
+              </Select.Option>
+            ))}
+          </Select>
+        </FormControl>
+      </div>
+    </Card>
   );
 }
